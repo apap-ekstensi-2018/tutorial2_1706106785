@@ -37,31 +37,13 @@ public class PageController {
 		return "greeting";
 	}
 	
-	@RequestMapping(value = {"/perkalian","perkalian/{a}","perkalian/{b}","perkalian/{c}"})
-	public String Perkalian (@PathVariable Optional<String> a,Optional <String> b,Model model)
+	@RequestMapping(value = {"/perkalian","perkalian/{a}","perkalian/{b}"})
+	public String Perkalian (@RequestParam (value = "a",required = false, defaultValue="0")Integer a,
+			@RequestParam (value = "b",required = false, defaultValue="0")Integer b,Model model)
 	{
-		if(a.isPresent())
-		{
-			model.addAttribute("a",a.get());
-		}
-		else
-		{
-			model.addAttribute("a",0);
-		}
-		
-		if(b.isPresent())
-		{
-			model.addAttribute("b",b.get());
-		}
-		else
-		{
-			model.addAttribute("b",0);
-		}
-		
-		int a1 = Integer.parseInt(a.get());
-		int b1 = Integer.parseInt(b.get());
-		
-		model.addAttribute("c",a1*b1);
+		model.addAttribute("a",a);
+		model.addAttribute("b",b);
+		model.addAttribute("c",a*b);
 		
 		return "perkalian";
 	}
