@@ -10,8 +10,8 @@ import java.util.Optional;
 @Controller
 public class PageController {
 
-	@RequestMapping("/hello123")
-	public String hello()
+	@RequestMapping("/hello")
+	public String index()
 	{
 		return "hello";
 	}
